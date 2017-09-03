@@ -1,9 +1,7 @@
 """Submodule of keepasshttp, providing session handling."""
 import logging
 import os
-import yaml
-
-import xdg.BaseDirectory
+import json
 
 from . import protocol
 
@@ -22,11 +20,13 @@ class Session(object):
     @classmethod
     def start(cls, appname):
         """Start a new communication session."""
-        config_dir = xdg.BaseDirectory.save_config_path(app_name)
-        config_path = os.path.join(config_dir, 'keepasshttp.yml')
+        config_dir = os.path.join(os.getenv('HOME'), '.config/', appname)
+        if not os.path.isdir(config_dir):
+            os.makedirs(config_dir, 0o700)
+        config_path = os.path.join(config_dir, 'keepasshttp.json')
         if os.path.exists(config_path):
             with open(config_path) as fin:
-                config = yaml.safe_load(fin)
+                config = json.load(fin)
             id_ = config['id']
             key = config['key']
             if not protocol.test_associate(id_, key):
