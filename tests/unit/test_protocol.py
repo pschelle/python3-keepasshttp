@@ -28,3 +28,14 @@ class TestProtocol(unittest.TestCase):
         logins = protocol.get_logins('a', 'b', key, requestor)
         logins = [{'key': crypto.decrypt(logins[0]['key'], key, iv)}]
         self.assertEqual([{'key': b'test'}], logins)
+
+    def test_get_verifier(self):
+        iv = b'MOqFG9os2R0+IncvQbLVLA=='
+        key = b'/HFqSCUJa4hmcpjyXyijyv+aNHYSBhBouJ/t2G3vy0k='
+        self.assertEqual(crypto.encrypt(iv, key, iv), protocol.get_verifier(iv, key))
+
+    def test_check_verifier(self):
+        iv = b'MOqFG9os2R0+IncvQbLVLA=='
+        key = b'/HFqSCUJa4hmcpjyXyijyv+aNHYSBhBouJ/t2G3vy0k='
+        verifier = protocol.get_verifier(iv, key)
+        self.assertEqual(protocol.check_verifier(key, iv, verifier))
