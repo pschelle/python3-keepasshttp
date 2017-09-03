@@ -1,7 +1,8 @@
+"""Submodule of keepasshttp, providing helper methods."""
 import itertools
 
 
-def jsonMap(fn, json_obj):
+def json_map(fn, json_obj):
     """Apply function `fn` to each value in `json_obj`.
 
     json_obj is not a json string, but something that could be the result of
@@ -19,17 +20,34 @@ def jsonMap(fn, json_obj):
         if val is None:
             return None
         elif isinstance(val, dict):
-            return {k: _fn(v) for k, v in val.iteritems()}
+            return {k: _fn(v) for k, v in list(val.items())}
         elif isinstance(val, list):
-            return map(_fn, val)
+            return list(map(_fn, val))
+        elif isinstance(val, bytes):
+            return str(val, 'utf-8')
         else:
             return fn(val)
     return _fn(json_obj)
 
 
-def convertToStr(input_dict):
-    return jsonMap(str, input_dict)
+def convert_to_str(input_dict):
+    """Convert all keys and values of the given dict to str.
+
+    Args:
+        input_dict (dict): data dict
+    Returns:
+        dict: converted dict
+    """
+    return json_map(str, input_dict)
 
 
 def merge(d1, d2):
-    return dict(itertools.chain(d1.iteritems(), d2.iteritems()))
+    """Merge to dicts into one.
+
+    Args:
+        d1 (dict): dataset 1
+        d2 (dict): dataset 2
+    Returns:
+        dict: merged dict
+    """
+    return dict(itertools.chain(list(d1.items()), list(d2.items())))
