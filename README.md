@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/jobevers/python-keepasshttp/badge.svg?branch=master)](https://coveralls.io/github/jobevers/python-keepasshttp?branch=master)
 
 
-# python-keepasshttp
+# python3-keepasshttp
 Access passwords stored in keepass using the http plugin 
 
 ## Usage
@@ -11,8 +11,8 @@ Access passwords stored in keepass using the http plugin
 import keepasshttp
 
 session = keepasshttp.start('my_app_name')
-logins = session.getLogins('http://www.amazon.com')
-print logins
+logins = session.get_logins('http://www.amazon.com')
+print(logins)
 ```
 
 Which will output something like:
@@ -34,7 +34,7 @@ logins[0]['Password'].value
 
 ## Installation
 
-`pip install git+https://github.com/jobevers/python-keepasshttp.git`
+`pip3 install git+https://github.com/jobevers/python-keepasshttp.git`
 
 ## Notes
 
