@@ -14,16 +14,17 @@ class TestProtocol(unittest.TestCase):
 
     def test_test_associate(self):
         requestor = mock.Mock(return_value=True)
-        self.assertTrue(protocol.testAssociate('a', 'b', requestor))
+        self.assertTrue(protocol.test_associate('a', 'b', requestor))
 
-    def test_get_sogins(self):
+    def test_get_logins(self):
         key = crypto.get_random_key()
         iv = crypto.get_random_iv()
         requestor = mock.Mock(
             return_value={
-                'Entries': [{'key': crypto.encrypt('test', key, iv)}],
+                'Entries': [{'key': crypto.encrypt(b'test', key, iv)}],
                 'Nonce': iv,
             }
         )
         logins = protocol.get_logins('a', 'b', key, requestor)
-        self.assertEqual([{'key': 'test'}], logins)
+        logins = [{'key': crypto.decrypt(logins[0]['key'], key, iv)}]
+        self.assertEqual([{'key': b'test'}], logins)
