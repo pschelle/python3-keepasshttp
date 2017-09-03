@@ -5,8 +5,13 @@
 # python3-keepasshttp
 Access passwords stored in keepass using the http plugin 
 
+## Installation
+
+`pip3 install git+https://github.com/jobevers/python-keepasshttp.git`
+
 ## Usage
 
+### Python module
 ```python
 import keepasshttp
 
@@ -32,9 +37,33 @@ be accessed like
 logins[0]['Password'].value
 ```
 
-## Installation
+### CLI tool
+The CLI tools provides the possibility to search for an entry.
+```
+$ kphttp-cli --help
+Usage: kphttp-cli [OPTIONS] COMMAND [ARGS]...
 
-`pip3 install git+https://github.com/jobevers/python-keepasshttp.git`
+  Interact with KeePass using the KeePassHTTP plugin
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  get  Search for an entry.
+```
+```
+$ kphttp-cli get --help
+Usage: kphttp-cli get [OPTIONS] APPNAME URL
+
+  Search for an entry.
+
+Options:
+  --list                          List all matches instead of only the first.
+  --output [Name|Login|Password]  Specify which data should be printed.
+  --plaintext                     Print out the password - BE CAREFUL
+  --help                          Show this message and exit.
+```
+
 
 ## Notes
 
