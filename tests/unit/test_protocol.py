@@ -38,4 +38,4 @@ class TestProtocol(unittest.TestCase):
         iv = b'MOqFG9os2R0+IncvQbLVLA=='
         key = b'/HFqSCUJa4hmcpjyXyijyv+aNHYSBhBouJ/t2G3vy0k='
         verifier = protocol.get_verifier(iv, key)
-        self.assertEqual(protocol.check_verifier(key, iv, verifier))
+        self.assertTrue(protocol.check_verifier(key, iv, verifier))
