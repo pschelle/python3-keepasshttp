@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jobevers/python-keepasshttp.svg?branch=master)](https://travis-ci.org/jobevers/python-keepasshttp)
+[![Build Status](https://travis-ci.org/MarkusFreitag/python3-keepasshttp.svg?branch=master)](https://travis-ci.org/MarkusFreitag/python3-keepasshttp)
 [![Coverage Status](https://coveralls.io/repos/github/jobevers/python-keepasshttp/badge.svg?branch=master)](https://coveralls.io/github/jobevers/python-keepasshttp?branch=master)
 
 
