@@ -47,6 +47,31 @@ class Session(object):
         """
         return protocol.get_logins(url, self.id_, self.key)
 
+    def set_login(self, url, user, password):
+        """Create a new data entry.
+
+        Args:
+            url (str): system url
+            user (str): username
+            password (str): password
+        Returns:
+            dict: new created entry
+        """
+        return protocol.set_login(url, user, password, self.id_, self.key)
+
+    def update_login(self, uuid, url, user, password):
+        """Update the url, user or password of an existing entry.
+
+        Args:
+            uuid (str): entry uuid
+            url (str): system url
+            user (str): username
+            password (str): password
+        Returns:
+            dict: entry with updated values
+        """
+        return protocol.update_login(uuid, url, user, password, self.id_, self.key)
+
 
 def get_and_save_new_association(config_path):
     """Associate a new key and store it.
