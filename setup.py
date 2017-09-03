@@ -8,9 +8,13 @@ setup(name='keepasshttp',
       author_email='fmarkus@mailbox.org',
       packages=find_packages(exclude=['tests']),
       install_requires=[
+          'click',
           'cryptography',
           'requests'
           ],
       setup_requires=['nose>=1.0'],
-      tests_require=['mock==2.0.0']
+      tests_require=['mock==2.0.0'],
+      entry_points={
+          'console_scripts': ['kphttp-cli=keepasshttp.commands:cli'],
+          }
 )
