@@ -1,16 +1,16 @@
-import setuptools
+from setuptools import setup, find_packages
 
 
-setuptools.setup(
-    name='keepasshttp',
-    version='0.1.0',
-    packages=setuptools.find_packages(exclude=['tests']),
-    install_requires=[
-        'cryptography',
-        'pyyaml',
-        'pyxdg',
-        'requests'
-    ],
-    setup_requires=['nose>=1.0'],
-    tests_require=['mock==2.0.0']
+setup(name='keepasshttp',
+      version='0.2.0',
+      description='Python3 port of https://github.com/jobevers/python-keepasshttp',
+      author='Markus Freitag',
+      author_email='fmarkus@mailbox.org',
+      packages=find_packages(exclude=['tests']),
+      install_requires=[
+          'cryptography',
+          'requests'
+          ],
+      setup_requires=['nose>=1.0'],
+      tests_require=['mock==2.0.0']
 )
