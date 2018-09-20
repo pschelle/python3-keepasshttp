@@ -7,7 +7,7 @@ Access passwords stored in keepass using the http plugin
 
 ## Installation
 
-`pip3 install git+https://github.com/MarkusFreitag/python3-keepasshttp.git`
+`pip3 install git+https://github.com/pschelle/python3-keepasshttp.git`
 
 ## Usage
 
