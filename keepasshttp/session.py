@@ -20,7 +20,7 @@ class Session(object):
     @classmethod
     def start(cls, appname):
         """Start a new communication session."""
-        config_dir = os.path.join(os.getenv('HOME'), '.config/', appname)
+        config_dir = os.path.join(os.path.expanduser("~"), '.config/', appname)
         if not os.path.isdir(config_dir):
             os.makedirs(config_dir, 0o700)
         config_path = os.path.join(config_dir, 'keepasshttp.json')
