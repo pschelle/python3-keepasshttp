@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "keepasshttp"
+version = "0.2.0"
+description = "Python3 port of https://github.com/jobevers/python-keepasshttp"
+authors = ["Markus Freitag <fmarkus@mailbox.org>"]
+license = "MIT"  # You can adjust the license if necessary
+readme = "README.md"  # Assuming you have a README.md file
+repository = "https://github.com/jobevers/python-keepasshttp"
+homepage = "https://github.com/jobevers/python-keepasshttp"
+keywords = ["keepass", "http", "password-manager"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+click = "*"
+cryptography = "*"
+requests = "*"
+
+[tool.poetry.dev-dependencies]
+nose = ">=1.0"
+mock = "==2.0.0"
+
+[tool.poetry.scripts]
+kphttp-cli = "keepasshttp.commands:cli"
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
